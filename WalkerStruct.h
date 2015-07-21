@@ -9,7 +9,6 @@
 
 
 class Connection{
-	using it_type =  std::map<int, Connection>::iterator;
 private:
 	int n;
 	double deltaP{0};
@@ -54,6 +53,8 @@ public:
 	}
 	void deleteConnection(int n){
 		connections.erase(std::lower_bound(connections.begin(),connections.end(),n,[&](Connection c){return c.getN()<n;}));
+		inBoundConnections.erase(std::lower_bound(inBoundConnections.begin(),inBoundConnections.end(),n,[&](Connection c){return c.getN()<n;}));
+
 	}
 
 	void updateBools(){
